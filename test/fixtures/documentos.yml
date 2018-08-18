@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  descricao: MyString
+  titulo: MyString
+  brasao: MyString
+  autor: one
+  orgao: one
+  visibilidade: MyString
+
+two:
+  nome: MyString
+  descricao: MyString
+  titulo: MyString
+  brasao: MyString
+  autor: two
+  orgao: two
+  visibilidade: MyString

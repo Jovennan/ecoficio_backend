@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @documento.nome %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @documento.descricao %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @documento.titulo %>
+</p>
+
+<p>
+  <strong>Brasao:</strong>
+  <%= @documento.brasao %>
+</p>
+
+<p>
+  <strong>Autor:</strong>
+  <%= @documento.autor %>
+</p>
+
+<p>
+  <strong>Orgao:</strong>
+  <%= @documento.orgao %>
+</p>
+
+<p>
+  <strong>Visibilidade:</strong>
+  <%= @documento.visibilidade %>
+</p>
+
+<%= link_to 'Edit', edit_documento_path(@documento) %> |
+<%= link_to 'Back', documentos_path %>

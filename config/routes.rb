@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :documentos
   resources :papels
   root to: 'home#index'
   # Using Devise for authentication

@@ -1,0 +1,53 @@
+<%= form_with(model: documento, local: true) do |form| %>
+  <% if documento.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(documento.errors.count, "error") %> prohibited this documento from being saved:</h2>
+
+      <ul>
+      <% documento.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :titulo %>
+    <%= form.text_field :titulo, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :descricao %>
+      <%= form.text_area :descricao, { class: 'form-control', rows: '20' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Brasão" %>
+    <%= form.text_field :brasao, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :autor_id %>
+    <%= form.text_field :autor_id, value: "Jovennan", class: 'form-control', readonly: true %>
+    <%= form.hidden_field :autor_id, value: current_user.id %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Órgão de Destino" %>
+    <%= form.select :orgao_id, Orgao.all.select {|orgao| orgao.id != form.object.id}.collect {|orgao| [orgao.nome.upcase, orgao.id]}, {include_blank: 'Selecione um Órgão'}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :visibilidade %>
+    <%= form.text_field :visibilidade, { class: 'form-control' } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

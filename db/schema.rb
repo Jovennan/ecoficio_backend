@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_17_233444) do
+ActiveRecord::Schema.define(version: 2018_08_18_094737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 2018_08_17_233444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["orgao_id"], name: "index_departamentos_on_orgao_id"
+  end
+
+  create_table "documentos", force: :cascade do |t|
+    t.string "nome"
+    t.string "descricao"
+    t.string "titulo"
+    t.string "brasao"
+    t.bigint "autor_id"
+    t.bigint "orgao_id"
+    t.string "visibilidade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["autor_id"], name: "index_documentos_on_autor_id"
+    t.index ["orgao_id"], name: "index_documentos_on_orgao_id"
   end
 
   create_table "orgaos", force: :cascade do |t|
@@ -69,4 +83,5 @@ ActiveRecord::Schema.define(version: 2018_08_17_233444) do
   end
 
   add_foreign_key "departamentos", "orgaos"
+  add_foreign_key "documentos", "orgaos"
 end

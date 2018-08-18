@@ -1,5 +1,7 @@
 class PapelsController < ApplicationController
   before_action :set_papel, only: [:show, :edit, :update, :destroy]
+  before_action :load_permissaos, only: [:new, :create, :edit, :update]
+  before_action :papel_or_not_found, only: [:edit, :update, :destroy]
 
   # GET /papels
   # GET /papels.json
@@ -67,8 +69,22 @@ class PapelsController < ApplicationController
       @papel = Papel.find(params[:id])
     end
 
+    def load_permissaos
+      @permissaos = generate_permissaos
+    end
+
+    def papel_or_not_found
+      @papel = Papel.find_by(id: params[:id])
+      if @papel.nil?
+        flash['notice'] = 'Papel não encontrado.'
+        redirect_to papels_url
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def papel_params
-      params.require(:papel).permit(:nome, :descricao)
+      papel_params = params.require(:papel).permit(:nome, :descricao, permissao_ids: [])
+      papel_params[:permissao_ids] = papel_params[:permissao_ids].concat(permissao_ids_for_papels(params[:papels]))
+      papel_params
     end
 end

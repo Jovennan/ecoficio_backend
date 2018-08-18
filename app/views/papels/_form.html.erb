@@ -21,6 +21,27 @@
     <%= form.text_field :descricao %>
   </div>
 
+  <%= form.hidden_field 'permissao_ids[]', value: [] %>
+
+<div class="form-group">
+  <%= form.label :papel_permissaos, "Permissões Granulares"%>
+  <% @papels.each do |controller| %>
+    <h3><%= t("controllers.#{controller[:name]}") %></h3>
+    <div class="row">
+      <% controller[:actions].sort.each do |action| %>
+        <div class="col-xs-6 col-md-6">
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag "papels[]", "#{controller[:name]}_#{action}", papel.has_permissao?("#{controller[:name]}_#{action}"), id: "#{controller[:name]}_#{action}" %>
+              <%= form.label t("controllers.actions.#{action}"), for: "#{controller[:name]}_#{action}" %>
+            </label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

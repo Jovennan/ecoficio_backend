@@ -1,10 +1,10 @@
-module PermissionsService
+module PapelsService
 
     # Using protected, this method don't get listed in the "permissions" screen
     protected
       # Load controllers and actions on the fly to generate granular permission managment
-      def generate_permissions
-        permissions = []
+      def generate_permissaos
+        permissaos = []
         Rails.application.eager_load!
         controllers = BaseController.descendants
         controllers.each do |c|
@@ -15,18 +15,18 @@ module PermissionsService
           c.action_methods.each do |m|
             controller[:actions] << m unless m == 'method_missing'
           end
-          permissions << controller
+          permissaos << controller
         end
-        permissions
+        permissaos
       end
   
-      def find_or_create_role(name)
-        Role.find_or_create_by(name: name)
+      def find_or_create_permissao(nome)
+        Permissao.find_or_create_by(nome: nome)
       end
   
-      # Return a list of roles for the given array
-      def roles_ids_for_permissions(permissions = [])
-        p = permissions.collect { |name| Role.find_or_create_by(name: name) }.collect { |role| role.id }
+      # Return a list of permissaos for the given array
+      def permissaos_ids_for_permissaos(permissaos = [])
+        p = permissaos.collect { |nome| Permissao.find_or_create_by(nome: nome) }.collect { |permissao| permissao.id }
         puts "IDS: #{p}"
         p
       end
