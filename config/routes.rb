@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   devise_for :users,
     path_names: {
       sign_in: 'login', sign_out: 'logout',
-      password: 'senha', confirmation: 'confirmar'
+      password: 'senha', confirmation: 'confirmar',
+      sign_up: 'registro'
     },
     controllers: {
       sessions: 'users/sessions',
       passwords: 'users/passwords'
-    },
-    skip: [:registrations]
+    }#,
+    # skip: [:registrations]
 
   devise_scope :user do
     get "login", to: "users/sessions#new"
