@@ -1,5 +1,37 @@
-<div class="login-box-body">
-  <p class="login-box-msg">Entre com suas Credenciais</p>
+<style type="text/css">
+  .form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+<div class="form-signin">
+  <h1 class="h3 mb-3 font-weight-normal">Entre com suas Credenciais</h1>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="form-group has-feedback">
@@ -13,12 +45,12 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-8">
-      <%= f.submit 'Entrar', class:'btn btn-danger btn-block btn-flat' %>
-    </div>
-    <!-- /.col -->
+      <%= f.submit 'Entrar', class: 'btn btn-lg btn-primary btn-block' %>
   </div>
   <% end %>
-  <%= link_to 'Esqueceu sua senha? clique aqui', new_user_password_path %>
+  <div class="row">
+  <%= link_to 'Esqueceu sua senha? clique aqui', new_user_password_path %> || 
+  <%= link_to 'Cadastre-se', new_user_registration_path %>
+</div>
 </div>
 

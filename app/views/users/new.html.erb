@@ -1,14 +1,37 @@
+<style type="text/css">
+  .form-newuser {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+.form-newuser .checkbox {
+  font-weight: 400;
+}
+.form-newuser .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-newuser .form-control:focus {
+  z-index: 2;
+}
+.form-newuser input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-newuser input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
 
-
-<div class="row">
-  <div class="col-xs-12">
-    <!-- general form elements -->
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title">Formulario de Cadastro</h3>
-      </div>
-      <!-- /.box-header -->
-      <!-- form start -->
+  <div class="form-newuser">
+       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 
       <%= form_for @user, html: { role: 'form'} do |f| %>
       <div class="box-body">
@@ -21,7 +44,3 @@
       </div>
       <% end %>
     </div>
-    <!-- /.box -->
-
-  </div>
-</div>
