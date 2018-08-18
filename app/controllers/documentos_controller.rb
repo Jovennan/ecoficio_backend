@@ -10,6 +10,19 @@ class DocumentosController < ApplicationController
   # GET /documentos/1
   # GET /documentos/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        # pdf = Prawn::Document.new
+        pdf = DocumentosPdf.new(@documento)
+        pdf.text 'Hello World'
+        send_data pdf.render,
+          filename: "oficio_#{Time.new}",
+          type: 'application/pdf',
+          disposition: 'inline'
+      end
+    end
   end
 
   # GET /documentos/new
