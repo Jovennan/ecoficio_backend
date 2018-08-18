@@ -1,0 +1,60 @@
+<table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Nome Completo</th>
+              <th>E-mail</th>
+              <th>CPF</th>
+              <th>Cargo</th>
+              <th>Departamento</th>
+              <th colspan="3">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if @users.empty? %>
+              <tr>
+                <td colspan="5" style="text-align: center">
+                  <h3>Nenhum usuário encontrado.</h3>
+                </td>
+              </tr>
+            <% end %>
+            <% @users.each_with_index do |user, index| %>
+              <tr>
+                <td>
+                  <%= index+1 %>
+                </td>
+                <td class="col-xs-4">
+                  <%= "#{user.nome}" %>
+                </td>
+                <td class="col-xs-2">
+                  <%= user.email %>
+                </td>
+                <td class="col-xs-1">
+                  <%= user.cpf %>
+                </td>
+                <td class="col-xs-1">
+                  <%= user.cpf %>
+                </td>
+                <td class="col-xs-1">
+                  <%= user.cpf %>
+                </td>
+                <td class="col-xs-1">
+                  <%= link_to user_path(user) do %>
+                  <i class="fa fa-2x fa-eye"></i>
+                <% end %>
+              </td>
+              <td class="col-xs-1">
+                <%= link_to edit_user_path(user) do %>
+                <i class="fa fa-2x fa-edit"></i>
+              <% end %>
+            </td>
+            <td class="col-xs-1">
+              <%= link_to user_path(user), method: :delete, data: {confirm: "Voce tem certeza?"} do %>
+              <i class="fa fa-2x fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

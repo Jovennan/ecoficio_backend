@@ -81,10 +81,13 @@ ActiveRecord::Schema.define(version: 2018_08_18_130033) do
     t.string "nome"
     t.string "cpf"
     t.string "cargo"
+    t.bigint "departamento_id"
+    t.index ["departamento_id"], name: "index_users_on_departamento_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "departamentos", "orgaos"
   add_foreign_key "documentos", "orgaos"
+  add_foreign_key "users", "departamentos"
 end
