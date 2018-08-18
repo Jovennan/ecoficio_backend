@@ -16,9 +16,9 @@
     <%= form.text_field :nome %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :orgao_id %>
-    <%= form.text_field :orgao_id %>
+    <%= form.select :orgao_id, Orgao.all.select {|orgao| orgao.id != form.object.id}.collect {|orgao| [orgao.nome.titleize, orgao.id]}, {include_blank: 'Selecione um Órgão'}, { class: 'form-control' } %>
   </div>
 
   <div class="actions">

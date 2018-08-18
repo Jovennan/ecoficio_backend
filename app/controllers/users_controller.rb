@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :user_or_not_found, only: [:show, :edit, :update, :destroy]
+
     def new
       @user = User.new
     end
