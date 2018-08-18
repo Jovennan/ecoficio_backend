@@ -22,11 +22,12 @@ class DocumentosPdf < Prawn::Document
     def header_doc
       # Define a cor do traçado
       fill_color "666666"
-      image "#{Rails.root}/public/brasao_pb.png", :at => [0, cursor], :width => 77, :height => 33
-      image "#{Rails.root}/public/brasao_fundac.png", :at => [370, cursor], :width => 77, :height => 33, :indent => 20
+      image "#{Rails.root}/public/brasao_pb.png", :at => [185, cursor], :width => 77, :height => 33, :align => :center
+      move_down 35
       # Cria um texto com tamanho 30 PDF Points, bold alinha no centro]
       text "GOVERNO DO ESTADO DA PARAÍBA", :size => 9, :align => :center
       text "#{@documento.orgao.nome.upcase}", :size => 9, :align => :center
+      text "#{@documento.autor.departamento.nome.upcase}", :size => 9, :align => :center
   
       # Move 80 PDF points para baixo o cursor
       move_down 20
@@ -46,10 +47,12 @@ class DocumentosPdf < Prawn::Document
     def footer_doc
       font "Helvetica"
       # Inclui um texto com um link clicável (usando a tag link) no bottom da folha do lado esquerdo e coloca uma cor especifica nessa parte (usando a tag color)
-      text "Gerado por: #{@documento.autor.nome} cpf #{@documento.autor.cpf}", :size => 10, :inline_format => true, :valign => :bottom, :align => :left
-      # Inclui em baixo da folha do lado direito a data e o némero da página usando a tag page
-      text "Em: #{(Time.now).strftime("%d/%m/%y as %H:%M")} - Página ", :start_count_at => 0, :page_filter => :all, :align => :right, :size => 8
-      # Gera no nosso PDF e coloca na pasta public com o nome agreement.pdf
-      # render_file("public/educandos.pdf")
+      text "Gerado por: #{@documento.autor.nome} cpf #{@documento.autor.cpf}", :size => 10, :inline_format => true, :align => :center
+      move_down 20
+      text "Assinatura: #{@documento.brasao}", :size => 10, :inline_format => true, :valign => :bottom, :align => :left
+      move_down 20
+      # Inclui em baixo da folha do lado direito a data usando a tag page
+      text "Em: #{(Time.now).strftime("%d/%m/%y as %H:%M")}", :start_count_at => 0, :page_filter => :all, :align => :right, :size => 8
+      
     end
   end
