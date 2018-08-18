@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Formulário de Atualização</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+
+      <%= form_for @user, html: { role: 'form'} do |f| %>
+      <div class="box-body">
+
+        <%= render 'fields', f: f, user: @user %>
+        
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary btn-block">Atualizar</button>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <!-- /.box -->
+
+  </div>
+</div>

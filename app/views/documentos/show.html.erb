@@ -6,18 +6,13 @@
 </p>
 
 <p>
-  <strong>Descricao:</strong>
+  <strong>Descrição:</strong>
   <%= @documento.descricao %>
 </p>
 
 <p>
-  <strong>Titulo:</strong>
+  <strong>Título:</strong>
   <%= @documento.titulo %>
-</p>
-
-<p>
-  <strong>Brasao:</strong>
-  <%= @documento.brasao %>
 </p>
 
 <p>
@@ -26,7 +21,7 @@
 </p>
 
 <p>
-  <strong>Orgao:</strong>
+  <strong>Órgão:</strong>
   <%= @documento.orgao %>
 </p>
 
@@ -35,5 +30,10 @@
   <%= @documento.visibilidade %>
 </p>
 
-<%= link_to 'Edit', edit_documento_path(@documento) %> |
+<p>
+  <strong>Autenticação:</strong>
+  <%= @documento.brasao if @documento.brasao.present? %>
+</p>
+
+<%= link_to 'IMPRIMIR', documento_path(@documento, format: 'pdf') %> |
 <%= link_to 'Back', documentos_path %>

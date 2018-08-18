@@ -6,6 +6,7 @@
               <th>E-mail</th>
               <th>CPF</th>
               <th>Cargo</th>
+              <th>Órgão</th>
               <th>Departamento</th>
               <th colspan="3">Ações</th>
             </tr>
@@ -24,35 +25,35 @@
                 <td>
                   <%= index+1 %>
                 </td>
-                <td class="col-xs-4">
+                <td class="col-xs-3">
                   <%= "#{user.nome}" %>
                 </td>
                 <td class="col-xs-2">
-                  <%= user.email %>
+                  <%= user.email if user.email.present? %>
                 </td>
                 <td class="col-xs-1">
-                  <%= user.cpf %>
+                  <%= user.cpf if user.cpf.present? %>
                 </td>
                 <td class="col-xs-1">
-                  <%= user.cpf %>
+                  <%= user.cargo if user.cargo.present? %>
                 </td>
                 <td class="col-xs-1">
-                  <%= user.cpf %>
+                  <%= user.departamento.orgao.nome if user.departamento.present? %>
                 </td>
+                <td class="col-xs-1">
+                  <%= user.departamento.nome if user.departamento.present? %>
+                </td>
+                
                 <td class="col-xs-1">
                   <%= link_to user_path(user) do %>
-                  <i class="fa fa-2x fa-eye"></i>
+                  <i class="fa fa-2x fa-eye"> Visualizar</i>
                 <% end %>
               </td>
               <td class="col-xs-1">
                 <%= link_to edit_user_path(user) do %>
-                <i class="fa fa-2x fa-edit"></i>
+                <i class="fa fa-2x fa-edit">Editar</i>
               <% end %>
             </td>
-            <td class="col-xs-1">
-              <%= link_to user_path(user), method: :delete, data: {confirm: "Voce tem certeza?"} do %>
-              <i class="fa fa-2x fa-trash"></i>
-            <% end %>
           </td>
         </tr>
       <% end %>

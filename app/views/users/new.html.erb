@@ -1,0 +1,46 @@
+<style type="text/css">
+  .form-newuser {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px;
+  margin: auto;
+}
+.form-newuser .checkbox {
+  font-weight: 400;
+}
+.form-newuser .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-newuser .form-control:focus {
+  z-index: 2;
+}
+.form-newuser input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-newuser input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+  <div class="form-newuser">
+       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+
+      <%= form_for @user, html: { role: 'form'} do |f| %>
+      <div class="box-body">
+
+        <%= render 'fields', f: f, user: @user %>
+        
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+        </div>
+      </div>
+      <% end %>
+    </div>

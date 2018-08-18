@@ -10,6 +10,18 @@ class DocumentosController < ApplicationController
   # GET /documentos/1
   # GET /documentos/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        # pdf = Prawn::Document.new
+        pdf = DocumentosPdf.new(@documento)
+        send_data pdf.render,
+          filename: "oficio_#{Time.new}",
+          type: 'application/pdf',
+          disposition: 'inline'
+      end
+    end
   end
 
   # GET /documentos/new
@@ -25,7 +37,7 @@ class DocumentosController < ApplicationController
   # POST /documentos.json
   def create
     @documento = Documento.new(documento_params)
-
+    @documento.brasao = Digest::SHA512.hexdigest("#{@documento.titulo} - #{@documento.descricao}")
     respond_to do |format|
       if @documento.save
         format.html { redirect_to @documento, notice: 'Documento was successfully created.' }

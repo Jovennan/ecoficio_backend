@@ -13,22 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
 body {
-    padding-top: 100px;
+  padding-top: 5rem;
 }
-
-footer {
-    margin-top: 100px;
-}
-
-table,
-td,
-th {
-    vertical-align: middle;
-    border: none;
-}
-
-th {
-    border-bottom: 1px solid #DDD;
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
 }

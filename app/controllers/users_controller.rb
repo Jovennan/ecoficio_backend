@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :user_or_not_found, only: [:show, :edit, :update, :destroy]
+
     def new
       @user = User.new
     end
@@ -30,7 +32,6 @@ class UsersController < ApplicationController
       def create
     
         @user = User.new(user_params)
-        generate_default_password
         if @user.save    
           flash[:success] = "Usuario cadastrado"
           redirect_to users_path
@@ -71,11 +72,6 @@ class UsersController < ApplicationController
       end
     
       protected
-    
-        def generate_default_password
-          @user.password = '12345678'
-          @user.password_confirmation = '12345678'
-        end
     
         def user_or_not_found
           @user = User.find_by(id: params[:id])
