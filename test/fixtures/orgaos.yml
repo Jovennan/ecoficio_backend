@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  endereco: MyString
+  chefe: one
+
+two:
+  nome: MyString
+  endereco: MyString
+  chefe: two

@@ -16,6 +16,8 @@ Things you may want to cover:
 * Configuration
     bundle install
 
+    Create a archive config/database.yml look like config/database_example.ymlAD
+
 * Database creation
     rails db:create
 

@@ -1,0 +1,32 @@
+<%= form_with(model: orgao, local: true) do |form| %>
+  <% if orgao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(orgao.errors.count, "error") %> prohibited this orgao from being saved:</h2>
+
+      <ul>
+      <% orgao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Endereço" %>
+    <%= form.text_field :endereco, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :chefe_id %>
+    <%= form.select :chefe_id, User.all.select {|user| user.id != form.object.id}.collect {|user| [user.email.titleize, user.id]}, {include_blank: 'Selecione um Usuário'}, { class: 'form-control' } %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
