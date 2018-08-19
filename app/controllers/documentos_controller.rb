@@ -33,6 +33,27 @@ class DocumentosController < ApplicationController
   def edit
   end
 
+  def get
+    @documento = Documento.find_by(brasao: params[:brasao])
+    respond_to do |format|
+      if @documento
+        format.pdf do
+          # pdf = Prawn::Document.new
+          pdf = DocumentosPdf.new(@documento)
+          send_data pdf.render,
+            filename: "oficio_#{Time.new}",
+            type: 'application/pdf',
+            disposition: 'inline'
+        end
+        format.html { redirect_to @documento }
+        format.json { render :show, status: :success, location: @documento }
+      else
+        format.html { redirect_to "/" }
+        format.json { render json: @documento.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /documentos
   # POST /documentos.json
   def create

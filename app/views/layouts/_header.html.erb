@@ -1,6 +1,10 @@
  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ECOfício APP</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Digite o número do Ófício" aria-label="Search">
+      <%= form_tag("/checar/documento", method: "get", format: 'pdf', class: "form-control form-control-dark w-100") do %>
+        <%= label_tag(:brasao, "Autenticar documento:") %>
+        <%= text_field_tag(:brasao) %>
+        <%= submit_tag("Search") %>
+      <% end %>
     </nav>
 
     <div class="container-fluid">

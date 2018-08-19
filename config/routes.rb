@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :documentos
-  resources :papels
+  
   root to: 'home#index'
+  get "checar/documento", to: "documentos#get"
   # Using Devise for authentication
   devise_for :users,
     path_names: {
@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "login", to: "users/sessions#new"
   end
-
+  resources :documentos
+  resources :papels
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :departamentos
   resources :orgaos
