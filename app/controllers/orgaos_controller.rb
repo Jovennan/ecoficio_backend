@@ -28,7 +28,7 @@ class OrgaosController < ApplicationController
 
     respond_to do |format|
       if @orgao.save
-        format.html { redirect_to @orgao, notice: 'Orgao was successfully created.' }
+        format.html { redirect_to @orgao, notice: 'Órgão cadastrado com sucesso.' }
         format.json { render :show, status: :created, location: @orgao }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class OrgaosController < ApplicationController
   def update
     respond_to do |format|
       if @orgao.update(orgao_params)
-        format.html { redirect_to @orgao, notice: 'Orgao was successfully updated.' }
+        format.html { redirect_to @orgao, notice: 'Órgão atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @orgao }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class OrgaosController < ApplicationController
   def destroy
     @orgao.destroy
     respond_to do |format|
-      format.html { redirect_to orgaos_url, notice: 'Orgao was successfully destroyed.' }
+      format.html { redirect_to orgaos_url, notice: 'Órgão excluido com sucesso.' }
       format.json { head :no_content }
     end
   end

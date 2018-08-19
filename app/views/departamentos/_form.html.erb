@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, { class: 'form-control' } %>
   </div>
 
   <div class="form-group">
-    <%= form.label :orgao_id %>
+    <%= form.label :orgao_id, "Órgão" %>
     <%= form.select :orgao_id, Orgao.all.select {|orgao| orgao.id != form.object.id}.collect {|orgao| [orgao.nome.titleize, orgao.id]}, {include_blank: 'Selecione um Órgão'}, { class: 'form-control' } %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Salvar", class: "btn btn-success btn-block" %>
   </div>
 <% end %>

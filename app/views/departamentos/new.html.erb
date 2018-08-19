@@ -1,5 +1,7 @@
-<h1>New Departamento</h1>
+<%= render 'orgaos/styleForm' %>
+<div class="form-usuario">
+<h1 class="h3 mb-3 font-weight-normal">New Departamento</h1>
 
 <%= render 'form', departamento: @departamento %>
 
-<%= link_to 'Back', departamentos_path %>
+<%= link_to 'Voltar', departamentos_path, class: 'btn btn-lg btn-danger btn-block' %>
