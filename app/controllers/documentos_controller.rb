@@ -4,7 +4,14 @@ class DocumentosController < ApplicationController
   # GET /documentos
   # GET /documentos.json
   def index
-    @documentos = Documento.all
+    @documentos = []
+    if params[:orgao_id]
+      @documentos = Documento.where(orgao_id: params[:orgao_id])
+    else
+      @documentos = Documento.all
+    end
+    puts @documentos.length
+    @documentos
   end
 
   # GET /documentos/1

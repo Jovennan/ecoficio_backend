@@ -16,7 +16,7 @@
       <tr>
         <td><%= orgao.nome %></td>
         <td><%= orgao.endereco %></td>
-        <td><%= orgao.chefe %></td>
+        <td><%= orgao.chefe.nome %></td>
         <td><%= link_to 'Show', orgao %></td>
         <td><%= link_to 'Edit', edit_orgao_path(orgao) %></td>
         <td><%= link_to 'Destroy', orgao, method: :delete, data: { confirm: 'Are you sure?' } %></td>

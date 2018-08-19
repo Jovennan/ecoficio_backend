@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<% if @documentos.empty? %>
+              <tr>
+                <td colspan="5" style="text-align: center">
+                  <h3>Nenhum Documento.</h3>
+                </td>
+              </tr>
+            <% else %>
+
 <h1>Documentos</h1>
 
 <table>
@@ -19,8 +27,8 @@
       <tr>
         <td><%= documento.nome %></td>
         <td><%= documento.titulo %></td>
-        <td><%= documento.autor %></td>
-        <td><%= documento.orgao %></td>
+        <td><%= documento.autor.nome %></td>
+        <td><%= documento.orgao.nome %></td>
         <td><%= documento.visibilidade %></td>
         <td><%= link_to 'Visualizar', documento %></td>
       </tr>
@@ -29,5 +37,7 @@
 </table>
 
 <br>
+
+<% end %>
 
 <%= link_to 'New Documento', new_documento_path %>

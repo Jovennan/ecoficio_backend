@@ -1,9 +1,18 @@
  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ECOfício APP</a>
       <%= form_tag("/checar/documento", method: "get", format: 'pdf', class: "form-control form-control-dark w-100") do %>
-        <%= label_tag(:brasao, "Autenticar documento:") %>
-        <%= text_field_tag(:brasao) %>
-        <%= submit_tag("Search") %>
+        <%= label_tag(:brasao, "Sistema de comunicação oficial") %>
+        <section>
+          <table>
+            <tr>
+              <td>
+              <%= text_field_tag(:brasao, "", {class: 'form-control',placeholder: 'Id do Ófício'}) %></td>
+              <td>
+              <%= submit_tag("Autenticar",class: 'btn btn-lg btn-secondary') %>
+              </td>
+            </tr>
+          </table>
+        </section>
       <% end %>
     </nav>
 
@@ -24,14 +33,18 @@
             <%= link_to "Bem vindo #{current_user.nome}", user_path(current_user), method: :get, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a  class="nav-link" href="#">Meus Ofícios</a>
+            <a  class="nav-link" href="#"></a>
+            <%= link_to 'Ofícios Recebidos', documentos_path(orgao_id: current_user.departamento.orgao.id), method: :get, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Novo Ofício', new_documento_path, method: :get, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
           <% else %>
           <li class="nav-item">
-            <%= link_to 'Entrar', login_path, method: :get, class: "nav-link" %>
+          <%= link_to 'Entrar', login_path, method: :get, class: "nav-link" %>
             </li>
           <% end %>
 
