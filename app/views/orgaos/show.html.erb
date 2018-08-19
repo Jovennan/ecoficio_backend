@@ -1,19 +1,22 @@
+<%= render 'orgaos/styleForm' %>
 <p id="notice"><%= notice %></p>
+<div class="form-usuario">
+	<h1 class="h3 mb-3 font-weight-normal">Orgão</h1>
+	<p>
+	  <strong>Nome:</strong>
+	  <%= @orgao.nome %>
+	</p>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @orgao.nome %>
-</p>
+	<p>
+	  <strong>Endereco:</strong>
+	  <%= @orgao.endereco %>
+	</p>
 
-<p>
-  <strong>Endereco:</strong>
-  <%= @orgao.endereco %>
-</p>
+	<p>
+	  <strong>Chefe:</strong>
+	  <%= @orgao.chefe.email %>
+	</p>
 
-<p>
-  <strong>Chefe:</strong>
-  <%= @orgao.chefe %>
-</p>
-
-<%= link_to 'Edit', edit_orgao_path(@orgao) %> |
-<%= link_to 'Back', orgaos_path %>
+<%= link_to 'Editar', edit_orgao_path(@orgao), class: 'btn btn-lg btn-primary' %> |
+<%= link_to 'Voltar', orgaos_path, class: 'btn btn-lg btn-danger' %>
+</div>

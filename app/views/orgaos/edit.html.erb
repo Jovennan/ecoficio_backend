@@ -1,6 +1,9 @@
-<h1>Editing Orgao</h1>
+<%= render 'orgaos/styleForm' %>
+<div class="form-usuario">
+	<h1 class="h3 mb-3 font-weight-normal">Editing Orgao</h1>
 
 <%= render 'form', orgao: @orgao %>
 
-<%= link_to 'Show', @orgao %> |
-<%= link_to 'Back', orgaos_path %>
+<%= link_to 'Detalhes', @orgao, class: 'btn btn-lg btn-info btn-block' %> 
+<%= link_to 'Voltar', orgaos_path, class: 'btn btn-lg btn-danger btn-block' %>
+</div>
